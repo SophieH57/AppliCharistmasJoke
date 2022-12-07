@@ -9,10 +9,18 @@ import {
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
-import { NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 
+const ChristmasTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#ffffff',
+    background:'#db1111'
+  },
+};
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -22,8 +30,8 @@ const App = () => {
   };
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
+    <NavigationContainer theme={ChristmasTheme}>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name='Home' component={Home}></Stack.Screen>
         <Stack.Screen name='CounterPage' component={CounterPage}></Stack.Screen>
       </Stack.Navigator>
