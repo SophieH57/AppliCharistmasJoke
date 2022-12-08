@@ -2,15 +2,9 @@ import React, { useState } from 'react'
 import { Image, StyleSheet, Pressable, View, Text } from "react-native";
 import { LoadingSpinner } from "./LoadingSpinner";
 
-const greenButton = {
-    fontSize: 20,
-        color: "#ffffff",
-        backgroundColor: "#6daf4e",
-        padding: 15,
-        borderRadius: 15
-}
-
 const staticPresentImage = require("./images/cadeau.png");
+const christmasApiRequest = 'https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Christmas';
+const addLanguageApi = '?lang=';
 
 export function Home({navigation}){
     const [joke, setJoke] = useState('');
@@ -19,7 +13,7 @@ export function Home({navigation}){
     const fetchJoke = async () => {
           try {
             setLoading(true);
-            const response = await fetch('https://v2.jokeapi.dev/joke/christmas');
+            const response = await fetch(christmasApiRequest);
             const json = await response.json();
             setJoke(json);
           } catch (error) {
@@ -29,16 +23,18 @@ export function Home({navigation}){
           }
         };
 
-    useState(() => {
-
-    })
+    let jokeDiv;
+    if(joke.type === "twopart"){
+        jokeDiv = (<><Text style={styles.jokeText}>{joke.setup}</Text><Text style={styles.jokeText}>{joke.delivery}</Text></>);
+    } else if(joke.type === "single"){
+        jokeDiv = <Text style={styles.jokeText}>{joke.joke}</Text>;
+    }
 
     return(
         <View style={styles.container}>
             {isLoading ? <LoadingSpinner /> :
                 <View style={styles.jokeContainer}>
-                    <Text style={styles.jokeText}>{joke.setup}</Text>
-                    <Text style={styles.jokeText}>{joke.delivery}</Text>
+                    {jokeDiv}
                 </View>
             }
             <View style={styles.buttonContainer}>
