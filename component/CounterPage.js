@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   },
   countDownText: {
     fontSize: 20,
+    fontFamily: 'Montserrat-SemiBold',
     color: "#ffffff"
   },
   greenButton: {
@@ -46,6 +47,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',
+    fontFamily: 'Montserrat-SemiBold',
     textAlign: 'center',
   }
 });

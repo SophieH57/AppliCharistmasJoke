@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Pressable, View, Text } from "react-native";
+import { Image, StyleSheet, Pressable, View, Text } from "react-native";
 import { LoadingSpinner } from "./LoadingSpinner";
 
 const greenButton = {
@@ -9,6 +9,8 @@ const greenButton = {
         padding: 15,
         borderRadius: 15
 }
+
+const staticPresentImage = require("./images/cadeau.png");
 
 export function Home({navigation}){
     const [joke, setJoke] = useState('');
@@ -33,17 +35,20 @@ export function Home({navigation}){
 
     return(
         <View style={styles.container}>
-            {isLoading ? <LoadingSpinner /> : <View>
-                <Text style={styles.jokeText}>{joke.setup}</Text>
-                <Text style={styles.jokeText}>{joke.delivery}</Text>
-            </View>}
-
-            <Pressable style={[styles.greenButton, styles.alignCenter]} onPress={()=> fetchJoke()}>
-                <Text style={styles.buttonText}>Generate Joke</Text>
-            </Pressable>
-            <Pressable style={[styles.greenButton, styles.alignBottom]} onPress={()=> navigation.navigate('CounterPage')}>
-                <Text style={styles.buttonText}>Cadeau</Text>
-            </Pressable>
+            {isLoading ? <LoadingSpinner /> :
+                <View style={styles.jokeContainer}>
+                    <Text style={styles.jokeText}>{joke.setup}</Text>
+                    <Text style={styles.jokeText}>{joke.delivery}</Text>
+                </View>
+            }
+            <View style={styles.buttonContainer}>
+                <Pressable style={[styles.greenButton, styles.alignCenter]} onPress={()=> fetchJoke()}>
+                     <Text style={styles.buttonText}>Generate Joke</Text>
+                </Pressable>
+                <Pressable style={[styles.greenButton, styles.alignBottom]} onPress={()=> navigation.navigate('CounterPage')}>
+                    <Image source={staticPresentImage}/>
+                </Pressable>
+            </View>
         </View>
     )
 }
@@ -57,7 +62,8 @@ const styles = StyleSheet.create({
   },
   jokeText: {
     fontSize: 20,
-    color: "#ffffff"
+    color: "#ffffff",
+    fontFamily: 'Montserrat-SemiBold',
   },
   greenButton: {
     fontSize: 20,
@@ -80,6 +86,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',
+    fontFamily: 'Montserrat-SemiBold',
     textAlign: 'center',
   }
 });
