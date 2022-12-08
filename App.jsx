@@ -2,6 +2,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Home} from './component/Home';
 import {CounterPage} from './component/CounterPage';
+import {ThemeProvider} from './theme/ThemeProvider';
 import {
   useColorScheme,
 } from 'react-native';
