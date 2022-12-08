@@ -1,19 +1,67 @@
-import { View, Text, Pressable } from 'react-native';
-import GetLocation from 'react-native-get-location';
+import { View, Text, Pressable, PermissionsAndroid } from 'react-native';
 import { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import {ThemeContext, themes as styles} from '../theme/ThemeContext';
 import { LoadingSpinner } from "./LoadingSpinner";
+import Geolocation from 'react-native-geolocation-service';
 
 export function LocationPage({ navigation }) {
 
-    const [location, setLocation] = useState();
+    const [location, setLocation] = useState(false);
     const [distance, setDistance] = useState();
 
     const coordonneesLaponie = {
         latitude: 67.9222,
         longitude: 26.5046
     }
+
+    // Function to get permission for location
+const requestLocationPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        {
+          title: 'Geolocation Permission',
+          message: 'Can we access your location?',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      console.log('granted', granted);
+      if (granted === 'granted') {
+        console.log('You can use Geolocation');
+        return true;
+      } else {
+        console.log('You cannot use Geolocation');
+        return false;
+      }
+    } catch (err) {
+      return false;
+    }
+  };
+
+  // function to check permissions and get Location
+  const getLocation = () => {
+    const result = requestLocationPermission();
+    result.then(res => {
+      console.log('res is:', res);
+      if (res) {
+        Geolocation.getCurrentPosition(
+          position => {
+            console.log(position);
+            setLocation(position);
+          },
+          error => {
+            // See error code charts below.
+            console.log(error.code, error.message);
+            setLocation(false);
+          },
+          {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+        );
+      }
+    });
+  };
 
     //This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
     function flyDistanceBeetweenTwoPoints(lat1, lon1, lat2, lon2) {
@@ -35,23 +83,9 @@ export function LocationPage({ navigation }) {
         return Value * Math.PI / 180;
     }
 
-
-    GetLocation.getCurrentPosition({
-        enableHighAccuracy: false,
-        timeout: 3000,
-    })
-        .then(location => {
-            console.log(location);
-            setLocation(location);
-        })
-        .catch(error => {
-            const { code, message } = error;
-            console.warn(code, message);
-        })
-
     useEffect(() => {
         if (location)
-            setDistance(flyDistanceBeetweenTwoPoints(location.latitude, location.longitude, coordonneesLaponie.latitude, coordonneesLaponie.longitude).toFixed(1));
+            setDistance(flyDistanceBeetweenTwoPoints(location.coords.latitude, location.coords.longitude, coordonneesLaponie.latitude, coordonneesLaponie.longitude).toFixed(1));
     }, [location]);
 
 
@@ -70,6 +104,8 @@ export function LocationPage({ navigation }) {
                         longitudeDelta: 0.0121,
                     }}
                 /> */}
+                <Pressable style={[styles.greenButton, styles.alignBottom]} onPress={() => getLocation()} ><Text>Where is Santa ?</Text>
+                </Pressable>
                 <Pressable style={[styles.greenButton, styles.alignBottom]} onPress={() => navigation.navigate('Home')} >
                     <Text style={styles.buttonText}>Back</Text>
                 </Pressable>
