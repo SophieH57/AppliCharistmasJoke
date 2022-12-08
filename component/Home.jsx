@@ -35,6 +35,9 @@ export function Home({navigation}){
                 <Pressable style={[styles.greenButton, styles.alignBottom]} onPress={()=> navigation.navigate('CounterPage')}>
                     <Image source={staticPresentImage}/>
                 </Pressable>
+                <Pressable style={[styles.greenButton, styles.alignBottom]} onPress={()=> navigation.navigate('Location')}>
+                    <Text style={styles.buttonText}>Localisation</Text>
+                </Pressable>
             </View>
         </View>
     )

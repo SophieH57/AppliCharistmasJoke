@@ -46,7 +46,7 @@ export const themes = {
                paddingHorizontal: 10,
                marginBottom: 100
              },
-             countDownText: {
+             whiteText: {
                               fontSize: 20,
                               color: "#ffffff",
                               fontFamily: 'Montserrat-SemiBold',

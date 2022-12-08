@@ -29,7 +29,7 @@ export function CounterPage({navigation}){
 
     return(
         <View style={styles.container}>
-            <Text style={styles.countDownText}>{days} days before Christmas !</Text>
+            <Text style={styles.whiteText}>{days} days before Christmas !</Text>
             <Image style={styles.spruceImg} source={staticSpruceImage}/>
             <Pressable style={[styles.greenButton, styles.alignCenter]} onPress={()=> navigation.navigate('Home')} >
                 <Text style={styles.buttonText}>Back</Text>
