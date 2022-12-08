@@ -74,8 +74,6 @@ export function LocationPage({ navigation }) {
                     <Text style={styles.buttonText}>Back</Text>
                 </Pressable>
             </View>
-
-
         </>
     )
 }
