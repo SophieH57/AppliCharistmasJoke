@@ -29,6 +29,9 @@ export function Home({navigation}){
             <Pressable style={[styles.greenButton, styles.alignBottom]} onPress={()=> navigation.navigate('CounterPage')}>
                 <Text style={styles.buttonText}>Cadeau</Text>
             </Pressable>
+            <Pressable style={[styles.greenButton, styles.alignBottom]} onPress={()=> navigation.navigate('Location')}>
+                <Text style={styles.buttonText}>Localisation</Text>
+            </Pressable>
         </View>
     )
 }
