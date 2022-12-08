@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, Pressable, View, Text } from "react-native";
+import { LoadingSpinner } from "./LoadingSpinner";
 
 const greenButton = {
     fontSize: 20,
@@ -11,10 +12,20 @@ const greenButton = {
 
 export function Home({navigation}){
     const [joke, setJoke] = useState('');
+    const [isLoading, setLoading] = useState(false);
 
-    function fetchJoke() {
-      alert('Hello!');
-    }
+    const fetchJoke = async () => {
+          try {
+            setLoading(true);
+            const response = await fetch('https://v2.jokeapi.dev/joke/christmas');
+            const json = await response.json();
+            setJoke(json);
+          } catch (error) {
+            console.error(error);
+          } finally {
+            setLoading(false);
+          }
+        };
 
     useState(() => {
 
@@ -22,7 +33,11 @@ export function Home({navigation}){
 
     return(
         <View style={styles.container}>
-            <Text style={styles.jokeText}>{joke}</Text>
+            {isLoading ? <LoadingSpinner /> : <View>
+                <Text style={styles.jokeText}>{joke.setup}</Text>
+                <Text style={styles.jokeText}>{joke.delivery}</Text>
+            </View>}
+
             <Pressable style={[styles.greenButton, styles.alignCenter]} onPress={()=> fetchJoke()}>
                 <Text style={styles.buttonText}>Generate Joke</Text>
             </Pressable>
