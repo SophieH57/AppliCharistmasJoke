@@ -1,8 +1,29 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Text, Pressable } from "react-native";
 
+import dayjs, { to } from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
+dayjs.tz.guess()
+
+const christmasDate = '2022-12-25';
+const refreshEachDay = 86400000;
+
 export function CounterPage({navigation}){
-    const[days, setDays] = useState(0);
+    const[days, setDays] = useState('0');
+
+    const getCountDownTime = (() => {
+        const today = dayjs.utc().local().format();
+        setDays(dayjs(christmasDate).diff(today, 'day'));
+    });
+
+    useState(() => {
+        getCountDownTime()
+        setInterval(() => { getCountDownTime() }, refreshEachDay);
+    })
 
     return(
         <View style={styles.container}>
