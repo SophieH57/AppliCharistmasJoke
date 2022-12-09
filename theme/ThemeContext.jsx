@@ -31,13 +31,27 @@ export const themes = {
     borderRadius: 15,
     justifyContent: 'center',
     elevation: 3,
-    marginVertical: 5
+    marginVertical: 5,
+    width: '50%'
   },
-  container: {
-    flex: 1,
+  jokeContainer: {
+    flex:2,
+    height: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    alignSelf: 'stretch'
+    textAlign: 'center',
+  },
+  buttonContainer: {
+    flex:1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  container: {
+    flex:1,
+  },
+  countDownContainer: {
+    flex:1,
+    alignItems: 'center',
   },
   jokeText: {
     fontSize: 20,
@@ -53,6 +67,10 @@ export const themes = {
     fontFamily: 'Montserrat-SemiBold',
     paddingHorizontal: 10,
     marginTop: 100
+  },
+  imgContainer: {
+    flex: 1,
+    padding: 70
   },
   spruceImg: {
     flex: 1,
