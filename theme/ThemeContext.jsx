@@ -43,6 +43,7 @@ export const themes = {
     fontSize: 20,
     color: "#ffffff",
     fontFamily: 'Montserrat-SemiBold',
+    textAlign: 'center',
     paddingHorizontal: 10,
     marginBottom: 100
   },
