@@ -86,6 +86,7 @@ const requestLocationPermission = async () => {
     useEffect(() => {
         if (location)
             setDistance(flyDistanceBeetweenTwoPoints(location.coords.latitude, location.coords.longitude, coordonneesLaponie.latitude, coordonneesLaponie.longitude).toFixed(1));
+        else getLocation();
     }, [location]);
 
 
@@ -104,8 +105,6 @@ const requestLocationPermission = async () => {
                         longitudeDelta: 0.0121,
                     }}
                 /> */}
-                <Pressable style={[styles.greenButton, styles.alignBottom]} onPress={() => getLocation()} ><Text>Where is Santa ?</Text>
-                </Pressable>
                 <Pressable style={[styles.greenButton, styles.alignBottom]} onPress={() => navigation.navigate('Home')} >
                     <Text style={styles.buttonText}>Back</Text>
                 </Pressable>
