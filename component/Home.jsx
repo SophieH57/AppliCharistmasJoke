@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react'
-import { Image, StyleSheet, Pressable, View, Text } from "react-native";
+import React, { useState } from 'react'
+import { Image, Pressable, View, Text } from "react-native";
 import { LoadingSpinner } from "./LoadingSpinner";
 import * as RNLocalize from "react-native-localize";
-import { ThemeContext, themes as styles } from '../theme/ThemeContext';
+import { themes as styles } from '../theme/ThemeContext';
 import { fetchJoke } from '../service/JokeService'
 
 const staticPresentImage = require("./images/cadeau.png");

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { Modal, StyleSheet, View, Text, ActivityIndicator } from "react-native";
+import React from 'react'
+import { StyleSheet, View, ActivityIndicator } from "react-native";
 
-export function LoadingSpinner({ navigation }) {
+export function LoadingSpinner() {
   return (
     <View style={styles.modalBackground}>
       <View style={styles.activityIndicatorWrapper}>

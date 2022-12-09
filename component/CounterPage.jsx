@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Image, StyleSheet, View, Text, Pressable } from "react-native";
-import { ThemeContext, themes as styles } from '../theme/ThemeContext';
+import { Image, View, Text, Pressable } from "react-native";
+import { themes as styles } from '../theme/ThemeContext';
 
-import dayjs, { to } from "dayjs";
+import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 
