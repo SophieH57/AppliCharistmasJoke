@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { ThemeContext, themes as styles } from '../theme/ThemeContext';
 import { LoadingSpinner } from "./LoadingSpinner";
 import { FlyDistanceCalcul } from '../service/FlyDistanceCalcul';
-import useGeolocation from '../hooks/useGeolocation';
+import useGeolocation from '../utils/useGeolocation';
 
 export function LocationPage({ navigation }) {
 
