@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { Modal, StyleSheet, View, Text, ActivityIndicator } from "react-native";
 
-export function LoadingSpinner({navigation}){
-    return(
-            <View style={styles.modalBackground}>
-                <View style={styles.activityIndicatorWrapper}>
-                    <ActivityIndicator color="white" />
-                </View>
-            </View>
-    )
+export function LoadingSpinner({ navigation }) {
+  return (
+    <View style={styles.modalBackground}>
+      <View style={styles.activityIndicatorWrapper}>
+        <ActivityIndicator color="white" />
+      </View>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({

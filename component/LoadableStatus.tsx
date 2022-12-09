@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, Text, View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, Text, View } from 'react-native';
 
 type Props<T> = {
   promise: Promise<Response>;
@@ -14,10 +14,10 @@ export enum LOADABLE_STATUS {
   ERROR = 'ERROR',
 }
 
-function Loadable(props: {customText?: string}) {
+function Loadable(props: { customText?: string }) {
   return (
     <>
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         <ActivityIndicator size="large" />
       </View>
       <Text>
