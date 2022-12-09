@@ -77,6 +77,10 @@ export const themes = {
     aspectRatio: 1.5,
     resizeMode: 'contain',
   },
+  santaText:{
+    marginBottom: 200,
+    textAlign: 'center',
+  }
 };
 
 export const ThemeContext = React.createContext(
