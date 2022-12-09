@@ -5,7 +5,6 @@ import {CounterPage} from './component/CounterPage';
 import { LocationPage } from './component/LocationPage';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
-
 const Stack = createNativeStackNavigator();
 
 const ChristmasTheme = {
@@ -18,15 +17,14 @@ const ChristmasTheme = {
 };
 
 const App = () => {
-
   return (
-    <NavigationContainer theme={ChristmasTheme}>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name='Home' component={Home}></Stack.Screen>
-        <Stack.Screen name='CounterPage' component={CounterPage}></Stack.Screen>
-        <Stack.Screen name='Location' component={LocationPage}></Stack.Screen>
-      </Stack.Navigator>
-    </NavigationContainer>
+      <NavigationContainer theme={ChristmasTheme}>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name='Home' component={Home}></Stack.Screen>
+          <Stack.Screen name='CounterPage' component={CounterPage}></Stack.Screen>
+          <Stack.Screen name='Location' component={LocationPage}></Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 };
 

@@ -10,7 +10,7 @@ import useLanguage from '../utils/useLanguage';
 const staticPresentImage = require('./images/cadeau.png');
 
 export function Home({navigation}) {
-  const {selectedLanguage} = useLanguage(RNLocalize.getCountry().toLowerCase());
+  const selectedLanguage = useLanguage();
   const [joke, setJoke] = useState('');
   const [isLoading, setLoading] = useState(false);
 
@@ -25,13 +25,13 @@ export function Home({navigation}) {
       </View>
       <View style={styles.buttonContainer}>
         <Pressable style={[styles.greenButton, styles.alignCenter]} onPress={() => fetchJoke( setJoke, setLoading, RNLocalize.getCountry().toLowerCase())}>
-          <Text style={styles.buttonText}>{selectedLanguage.words.generateButton}</Text>
+          <Text style={styles.buttonText}>{selectedLanguage.generateButton}</Text>
         </Pressable>
         <Pressable style={[styles.greenButton, styles.alignBottom]} onPress={() => navigation.navigate('CounterPage')}>
           <Image source={staticPresentImage} />
         </Pressable>
         <Pressable style={[styles.greenButton, styles.alignBottom]} onPress={() => navigation.navigate('Location')}>
-          <Text style={styles.buttonText}>{selectedLanguage.words.whereIsSantaButton}</Text>
+          <Text style={styles.buttonText}>{selectedLanguage.whereIsSantaButton}</Text>
         </Pressable>
       </View>
     </View>
