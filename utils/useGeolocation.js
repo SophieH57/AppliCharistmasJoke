@@ -18,7 +18,6 @@ export default function useGeolocation() {
                 buttonPositive: 'OK',
             },
         ).then(() => setPermission(true)).catch(() => console.error('error'));
-        console.log('p');
     }, [])
 
     useEffect(() => {
@@ -36,6 +35,6 @@ export default function useGeolocation() {
                 { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
             );
         }
-    });
+    },[permission]);
     return { permission, location }
 }
